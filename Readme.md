@@ -52,36 +52,42 @@ graph TD;
 
 ```
 project-root/
-├── app/
-│   ├── __init__.py
-│   ├── main.py                # FastAPI app instance & server startup
-│   ├── api/
-│   │   ├── __init__.py
-│   │   └── routes.py          # API endpoints (input handling, response generation)
-│   ├── core/
-│   │   ├── __init__.py
-│   │   └── config.py          # Configuration settings (e.g., Hugging Face API token)
-│   ├── models/
-│   │   ├── __init__.py
-│   │   └── schemas.py         # Pydantic models for request/response validation
-│   ├── services/
-│   │   ├── __init__.py
-│   │   ├── article_extractor.py   # Fetches, parses & cleans article content using BeautifulSoup
-│   │   ├── agent_summarization.py # Summarization agent using LangChain
-│   │   ├── agent_analysis.py      # Analysis agent to extract key arguments and assumptions
-│   │   ├── agent_counter.py       # Counter-perspective agent generating the opposite view
-│   │   └── llm_integration.py     # Integration of Hugging Face Inference API with LangChain
-│   ├── utils/
-│   │   ├── __init__.py
-│   │   └── helpers.py         # Utility functions (logging, error handling, etc.)
-├── tests/
-│   ├── __init__.py
-│   ├── test_article_extractor.py  # Unit tests for article extraction logic
-│   ├── test_agents.py             # Tests for summarization, analysis & counter agents
-│   ├── test_routes.py             # Tests for FastAPI routes/endpoints
-│   └── test_llm_integration.py    # Tests for the Hugging Face API integration
-├── requirements.txt           # Project dependencies (FastAPI, LangChain, BeautifulSoup, etc.)
-├── README.md                  # Project documentation & setup instructions
-└── .env                       # Environment variables (e.g., Hugging Face API token)
-```
+├── frontend/
+|
+├── backend/ 
+|   ├── requirements.txt                             # Project dependencies
+|   ├── README.md                                    # Project documentation
+|   ├── .env                                         # Environment variables
+|   └──app/
+|        ├── __init__.py
+|        ├── main.py                      # FastAPI app instance & server startup
+|        ├── api/
+|        |    ├── __init__.py
+|        │    └── routes/
+|        │       ├── __init__.py
+|        │       └── article_routes.py    # API endpoints related to articles
+|        ├── core/
+|        │   ├── __init__.py
+|        │   └── config.py                # Configuration settings
+|        ├── db/                          # Database related files
+|        │   ├── __init__.py
+|        │   ├── database.py              # Database connection and session management
+|        │   └── models.py                # SQLAlchemy models
+|        ├── models/
+|        │   ├── __init__.py
+|        │   └── schemas.py               # Pydantic models for request/response validation
+|        ├── scrapers/
+|        │   ├── __init__.py
+|        │   └── article_scraper.py       # Web scraping logic for articles
+|        ├── services/
+|        │   ├── __init__.py
+|        │   ├── summarization_service.py # Handles article summarization
+|        │   ├── analysis_service.py      # Handles article analysis
+|        │   └── counter_service.py       # Handles counter-perspective generation
+|        └── utils/
+|            ├── __init__.py
+|            ├── helpers.py               # Utility functions (logging, error handling, etc.)
+|            └── logger.py                # Custom logging setup               
 
+
+```
