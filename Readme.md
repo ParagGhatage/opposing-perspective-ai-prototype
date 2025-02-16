@@ -1,35 +1,35 @@
 # Opposing-Perspectives-AI Backend Architecture
 
 ## Overview
-The backend of Opposing-Perspectives-AI is designed to process debates efficiently by leveraging AI-driven content analysis, summarization, and reasoning. The system consists of multiple interconnected components, ensuring scalability, modularity, and extensibility.
+The backend of Opposing-Perspectives-AI is designed to process articles and generate opposing perspectives efficiently. The system consists of multiple interconnected components, ensuring scalability, modularity, and extensibility.
 
 ## Architecture
 
 ### Components:
 1. **Scraping Agent**
-   - Collects relevant articles, papers, and sources based on debate topics.
-   - Uses web scraping and APIs to fetch data.
-   - Stores data in a structured format.
+   - Fetches article content from the provided URL.
+   - Uses web scraping and APIs to extract text.
+   - Cleans and structures the data for further processing.
 
 2. **Summarizer**
    - Processes raw content and extracts key information.
    - Uses NLP-based summarization techniques.
-   - Outputs structured summaries for further processing.
+   - Outputs structured summaries for argument extraction.
 
 3. **LangChain Processing Layer**
-   - Processes summarized content to extract arguments and perspectives.
+   - Extracts key arguments and perspectives from the summarized content.
    - Uses prompt engineering and embedding models.
    - Implements retrieval-augmented generation (RAG) for contextual understanding.
 
 4. **LangGraph-Based Workflow**
-   - Defines dynamic execution flows for AI reasoning and debate analysis.
+   - Defines dynamic execution flows for AI reasoning and argument generation.
    - Supports modular expansion with new reasoning strategies.
    - Ensures smooth integration with LangChain and CoT modules.
 
 5. **Chain-of-Thought (CoT) Reasoning**
-   - Implements structured reasoning for argument validation.
+   - Implements structured reasoning for generating counter-perspectives.
    - Uses multi-step logical evaluation.
-   - Enhances debate intelligence by verifying argument consistency.
+   - Enhances argument generation by verifying consistency.
 
 6. **API Layer**
    - Exposes endpoints for frontend interaction.
@@ -40,11 +40,11 @@ The backend of Opposing-Perspectives-AI is designed to process debates efficient
 
 ```mermaid
 graph TD;
-    A[User Input / Debate Topic] -->|Fetch Sources| B[Scraping Agent];
+    A[User Inputs Article URL] -->|Scrape Content| B[Scraping Agent];
     B -->|Extract Content| C[Summarizer];
     C -->|Summarized Data| D[LangChain Processing];
     D -->|Generate Arguments| E[LangGraph Workflow];
-    E -->|CoT Reasoning| F[Final Debate Analysis];
+    E -->|CoT Reasoning| F[Generate Opposing Perspective];
     F -->|API Response| G[Frontend Display];
 ```
 
@@ -84,3 +84,4 @@ project-root/
 ├── README.md                  # Project documentation & setup instructions
 └── .env                       # Environment variables (e.g., Hugging Face API token)
 ```
+
