@@ -34,7 +34,7 @@ The backend of Opposing-Perspectives-AI is designed to process articles and gene
 6. **API Layer**
    - Exposes endpoints for frontend interaction.
    - Manages requests and responses efficiently.
-   - Ensures authentication, rate limiting, and logging.
+   - Ensures logging.
 
 ## Workflow Diagram
 
